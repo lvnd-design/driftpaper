@@ -1,0 +1,2573 @@
+html.paper-stipple-page,
+body.paper-stipple-page,
+body.paper-stipple-page #root {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.paper-stipple-lab {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f3f0ea;
+  color: #1e2025;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-topbar {
+  display: flex;
+  flex: 0 0 auto;
+  min-height: 64px;
+  align-items: center;
+  gap: 18px;
+  padding: 10px clamp(20px, 3vw, 48px);
+  border-bottom: 1px solid #d7d3cb;
+  background: rgb(250 249 246 / 94%);
+}
+
+.paper-stipple-back {
+  color: #5b5f67;
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.paper-stipple-back:hover { color: #101217; }
+
+.paper-stipple-topbar h1,
+.paper-stipple-preview h2,
+.paper-stipple-inspector h2 {
+  margin: 0;
+  letter-spacing: -0.035em;
+}
+
+.paper-stipple-topbar h1 { font-size: 1.1rem; font-weight: 720; }
+
+.paper-stipple-kicker,
+.paper-stipple-eyebrow {
+  display: block;
+  color: #74757a;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.paper-stipple-kicker { margin-bottom: 2px; }
+
+.paper-stipple-topbar-actions {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.paper-stipple-local-status {
+  color: #426452;
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+.paper-stipple-local-status::before {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 999px;
+  background: #6ba981;
+  content: "";
+}
+
+.paper-stipple-canvas-format {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #5c616a;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.paper-stipple-canvas-format select {
+  min-height: 36px;
+  width: 212px;
+  padding: 0 26px 0 9px;
+  border: 1px solid #d4d1ca;
+  border-radius: 7px;
+  background: #fffefa;
+  color: #30343c;
+  font: inherit;
+}
+
+.paper-stipple-topbar-actions button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 7px;
+  background: #20233b;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.paper-stipple-topbar-actions button:hover { background: #35395f; }
+
+.paper-stipple-shell {
+  display: grid;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  grid-template-columns: minmax(0, 1fr) 372px;
+}
+
+.paper-stipple-main {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(20px, 3vw, 42px);
+}
+
+.paper-stipple-error {
+  max-width: 1420px;
+  margin: 0 auto 18px;
+  padding: 11px 13px;
+  border: 1px solid #e3b9b4;
+  border-radius: 7px;
+  background: #fff1ef;
+  color: #8d2f2b;
+  font-size: 0.82rem;
+}
+
+.paper-stipple-previews {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  align-items: stretch;
+  max-width: 1420px;
+  margin: 0 auto;
+}
+
+.paper-stipple-source-buffer { display: none; }
+
+.paper-stipple-preview {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.paper-stipple-canvas-stage {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-self: center;
+}
+
+.paper-stipple-canvas-wrap {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #d6d2ca;
+  border-radius: 10px;
+  background-color: #e5e3dc;
+  background-image:
+    linear-gradient(45deg, rgb(255 255 255 / 48%) 25%, transparent 25%),
+    linear-gradient(-45deg, rgb(255 255 255 / 48%) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgb(255 255 255 / 48%) 75%),
+    linear-gradient(-45deg, transparent 75%, rgb(255 255 255 / 48%) 75%);
+  background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+  background-size: 18px 18px;
+  box-shadow: 0 12px 28px rgb(53 46 36 / 9%);
+}
+
+.paper-stipple-canvas-wrap {
+  min-height: 0;
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.paper-stipple-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.paper-stipple-canvas-toolbar {
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.paper-stipple-draggable-canvas {
+  cursor: grab;
+  touch-action: none;
+}
+
+.paper-stipple-draggable-canvas:active { cursor: grabbing; }
+
+.paper-stipple-version-canvas { background: #e5e3dc; }
+
+.paper-stipple-version-canvas img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.paper-stipple-version-canvas p {
+  max-width: 270px;
+  margin: 0;
+  color: #6d7078;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.paper-stipple-inspector {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: 14px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 20px 32px;
+  border-left: 1px solid #d7d3cb;
+  background: #f9f7f2;
+}
+
+.paper-stipple-inspector-heading h2 { margin-top: 4px; font-size: 1.06rem; font-weight: 720; }
+
+.paper-stipple-inspector-header {
+  display: flex;
+  align-items: end;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.paper-stipple-inspector-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dedbd4;
+}
+
+.paper-stipple-inspector-tabs button,
+.paper-stipple-versions-trigger {
+  min-height: 32px;
+  border: 0;
+  background: transparent;
+  color: #646975;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 720;
+}
+
+.paper-stipple-inspector-tabs button {
+  border-bottom: 2px solid transparent;
+}
+
+.paper-stipple-inspector-tabs button[aria-pressed="true"],
+.paper-stipple-versions-trigger[aria-pressed="true"] {
+  color: #24345d;
+}
+
+.paper-stipple-inspector-tabs button[aria-pressed="true"] { border-bottom-color: #24345d; }
+.paper-stipple-versions-trigger { padding: 0 2px 3px; }
+
+.paper-stipple-section-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.paper-stipple-history-actions,
+.paper-stipple-layer-actions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.paper-stipple-history-actions button,
+.paper-stipple-layer-actions button,
+.paper-stipple-add-layer,
+.paper-stipple-delete-layer,
+.paper-stipple-reset-button,
+.paper-stipple-reset-icon,
+.paper-stipple-presets > .paper-stipple-section-header > button,
+.paper-stipple-version-actions button,
+.paper-stipple-versions-trigger {
+  min-height: 28px;
+  border: 1px solid #d5d2ca;
+  border-radius: 5px;
+  background: #fffefa;
+  color: #444953;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.paper-stipple-history-actions button { padding: 0 7px; }
+.paper-stipple-history-actions button:disabled,
+.paper-stipple-presets button:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.paper-stipple-presets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paper-stipple-presets > .paper-stipple-section-header strong,
+.paper-stipple-source-controls > .paper-stipple-section-header strong,
+.paper-stipple-versions > .paper-stipple-section-header strong {
+  display: block;
+  margin-top: 3px;
+  color: #30353e;
+  font-size: 0.88rem;
+}
+
+.paper-stipple-presets > .paper-stipple-section-header > button { padding: 0 9px; }
+
+.paper-stipple-preset-select { gap: 5px; }
+
+.paper-stipple-versions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paper-stipple-save-version { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; }
+
+.paper-stipple-save-version input {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 9px;
+  border: 1px solid #cfd3df;
+  border-radius: 7px;
+  background: white;
+  color: #2b2e35;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.paper-stipple-save-version button {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 7px;
+  background: #29385f;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.73rem;
+  font-weight: 750;
+}
+
+.paper-stipple-save-version button:hover { background: #364a7d; }
+
+.paper-stipple-version-note,
+.paper-stipple-version-message {
+  margin: -2px 0 0;
+  color: #69707c;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.paper-stipple-version-message { color: #536559; font-weight: 700; }
+
+.paper-stipple-version-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #dedbd4;
+}
+
+.paper-stipple-version-row {
+  display: flex;
+  min-height: 61px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid #ebe8e1;
+}
+
+.paper-stipple-version-row:last-child { border-bottom: 0; }
+.paper-stipple-version-row.is-active { box-shadow: inset 3px 0 #394c86; padding-left: 8px; }
+.paper-stipple-version-row > div:first-child { min-width: 0; }
+.paper-stipple-version-row strong,
+.paper-stipple-version-row small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.paper-stipple-version-row strong { color: #363b45; font-size: 0.75rem; }
+.paper-stipple-version-row small { margin-top: 2px; color: #747982; font-size: 0.65rem; }
+
+.paper-stipple-version-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 3px;
+}
+
+.paper-stipple-version-actions button { padding: 0 6px; }
+
+.paper-stipple-version-actions .paper-stipple-version-delete {
+  display: grid;
+  width: 28px;
+  place-items: center;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  color: #8d5660;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.paper-stipple-version-actions .paper-stipple-version-delete:hover {
+  border-color: #f1dadd;
+  background: #fff4f4;
+  color: #9f3547;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.paper-stipple-layers { display: flex; flex-direction: column; gap: 11px; }
+
+.paper-stipple-layer-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #dedbd4;
+}
+
+.paper-stipple-layer-row {
+  display: flex;
+  min-height: 43px;
+  align-items: stretch;
+  border-bottom: 1px solid #ebe8e1;
+}
+
+.paper-stipple-layer-row:last-child { border-bottom: 0; }
+.paper-stipple-layer-row.is-active { background: rgb(50 68 125 / 6%); }
+
+.paper-stipple-layer-select {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  color: #343942;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.paper-stipple-layer-select > span:last-child { min-width: 0; }
+.paper-stipple-layer-select strong,
+.paper-stipple-layer-select small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.paper-stipple-layer-select strong { font-size: 0.72rem; }
+.paper-stipple-layer-select small { margin-top: 1px; color: #797d84; font-size: 0.61rem; }
+
+.paper-stipple-layer-swatch {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  border: 1px solid rgb(41 44 50 / 22%);
+  border-radius: 50%;
+}
+
+.paper-stipple-layer-actions { padding: 0 6px 0 2px; }
+.paper-stipple-layer-actions button { width: 23px; padding: 0; border-color: transparent; background: transparent; font-size: 0.75rem; }
+.paper-stipple-layer-actions button:hover { border-color: #cecbc4; background: #fffefa; }
+.paper-stipple-layer-actions .paper-stipple-layer-visibility { width: auto; padding: 0 5px; font-size: 0.66rem; }
+
+.paper-stipple-add-layer { align-self: start; padding: 0 9px; }
+
+.paper-stipple-layer-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #dedbd4;
+}
+
+.paper-stipple-layer-editor-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.paper-stipple-layer-editor-heading strong { display: block; margin-top: 3px; font-size: 0.78rem; }
+
+.paper-stipple-reset-button {
+  flex: 0 0 auto;
+  padding: 0 8px;
+}
+
+.paper-stipple-reset-button:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.paper-stipple-reset-icon {
+  display: grid;
+  width: 28px;
+  min-width: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.paper-stipple-reset-icon:hover:not(:disabled) {
+  border-color: #b9b6ae;
+  background: #f6f4ee;
+}
+
+.paper-stipple-reset-icon:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.paper-stipple-reference-palette {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.paper-stipple-reference-palette legend {
+  padding: 0;
+  color: #4c515a;
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.paper-stipple-background-output {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.paper-stipple-background-output legend {
+  padding: 0;
+  color: #4c515a;
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.paper-stipple-segmented-control {
+  display: inline-flex;
+  gap: 3px;
+  margin-top: 7px;
+  padding: 3px;
+  border: 1px solid #d6d4ce;
+  border-radius: 7px;
+  background: #f0eee9;
+}
+
+.paper-stipple-segmented-control button {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #5e626a;
+  cursor: pointer;
+  font: 700 0.71rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-segmented-control button[aria-pressed="true"] {
+  background: #fffefa;
+  box-shadow: 0 1px 2px rgb(39 43 51 / 15%);
+  color: #27365f;
+}
+
+.paper-stipple-reference-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.paper-stipple-reference-swatch {
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  padding: 2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.paper-stipple-reference-swatch > span:first-child {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(38 42 50 / 24%);
+  border-radius: 50%;
+  background: var(--swatch-color);
+}
+
+.paper-stipple-reference-swatch:hover { background: rgb(50 68 125 / 8%); }
+
+.paper-stipple-reference-swatch[aria-pressed="true"] {
+  border-color: #344a83;
+  box-shadow: 0 1px 3px rgb(37 48 77 / 16%);
+}
+
+.paper-stipple-reference-swatch:focus-visible {
+  outline: 2px solid #5575d6;
+  outline-offset: 2px;
+}
+
+.paper-stipple-reference-custom {
+  display: inline-flex;
+  width: auto;
+  min-height: 28px;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px 2px 3px;
+  border-radius: 999px;
+  color: #4c515a;
+  font: 650 0.68rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-reference-custom > span:first-child {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.paper-stipple-reference-custom-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.paper-stipple-reference-color-name {
+  color: #72757d;
+  font-size: 0.67rem;
+  font-weight: 650;
+}
+
+.paper-stipple-delete-layer {
+  align-self: start;
+  padding: 0 9px;
+  border-color: #e2c2be;
+  background: #fff7f5;
+  color: #9a3f37;
+}
+
+.paper-stipple-select,
+.paper-stipple-upload,
+.paper-stipple-slider {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  color: #4c515a;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.paper-stipple-select select,
+.paper-stipple-upload input[type="file"] {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #cfd3df;
+  border-radius: 7px;
+  background: #fffefa;
+  color: #2b2e35;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.paper-stipple-select select { padding: 0 10px; }
+.paper-stipple-upload input[type="file"] { padding: 8px; }
+.paper-stipple-upload input[type="file"]::file-selector-button { margin-right: 8px; border: 0; background: transparent; color: #4a5576; font: inherit; font-weight: 700; }
+
+.paper-stipple-slider > span { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.paper-stipple-slider > span > label { min-width: 0; }
+.paper-stipple-slider-value { display: flex; flex: 0 0 auto; align-items: center; gap: 5px; }
+.paper-stipple-slider-value input[type="number"] {
+  width: 62px;
+  min-height: 28px;
+  padding: 0 5px;
+  border: 1px solid #cfd3df;
+  border-radius: 5px;
+  background: #fffefa;
+  color: #3e4655;
+  font: 650 0.73rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-align: right;
+}
+.paper-stipple-slider-value input[type="number"]:focus { outline: 2px solid #9aaddd; outline-offset: 1px; }
+.paper-stipple-slider > input[type="range"] { width: 100%; height: 18px; margin: 0; accent-color: #354776; }
+
+.paper-stipple-motion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 28px;
+  color: #4c515a;
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.paper-stipple-motion-toggle input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+}
+
+.paper-stipple-motion-toggle-track {
+  position: relative;
+  flex: 0 0 auto;
+  inline-size: 34px;
+  block-size: 20px;
+  border: 1px solid #c4c8d1;
+  border-radius: 999px;
+  background: #eceef2;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.paper-stipple-motion-toggle-track::after {
+  content: "";
+  position: absolute;
+  inset: 2px auto 2px 2px;
+  inline-size: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(34 41 52 / 20%);
+  transition: transform 160ms ease;
+}
+
+.paper-stipple-motion-toggle input:checked + .paper-stipple-motion-toggle-track {
+  border-color: #273d78;
+  background: #273d78;
+}
+
+.paper-stipple-motion-toggle input:checked + .paper-stipple-motion-toggle-track::after {
+  transform: translateX(14px);
+}
+
+.paper-stipple-motion-toggle input:focus-visible + .paper-stipple-motion-toggle-track {
+  outline: 2px solid #9aaddd;
+  outline-offset: 2px;
+}
+
+.paper-stipple-note {
+  margin: -4px 0 0;
+  color: #71747a;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.paper-stipple-stipple-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.paper-stipple-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #dedbd4;
+}
+
+.paper-stipple-control-group:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.paper-stipple-inline-palette {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.paper-stipple-type-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.paper-stipple-type-options.has-background {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.paper-stipple-inline-palette-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paper-stipple-inline-palette-actions button {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0 7px;
+  border: 1px solid #d5d2ca;
+  border-radius: 5px;
+  background: #fffefa;
+  color: #4a4f57;
+  cursor: pointer;
+  font: 700 0.7rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-palette-add:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.paper-stipple-palette-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.paper-stipple-palette-chip,
+.paper-stipple-palette-add {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border: 1px solid #d3d0c8;
+  border-radius: 50%;
+  background: #fffefa;
+  cursor: pointer;
+}
+
+.paper-stipple-palette-chip > span {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(36 40 49 / 22%);
+  border-radius: inherit;
+}
+
+.paper-stipple-palette-chip.is-background,
+.paper-stipple-palette-chip.is-background > span {
+  border-radius: 6px;
+}
+
+.paper-stipple-palette-chip.is-active {
+  border-color: #273d78;
+  box-shadow: 0 0 0 2px rgb(39 61 120 / 18%);
+}
+
+.paper-stipple-palette-chip.is-hidden > span {
+  opacity: 0.3;
+  filter: saturate(0.35);
+}
+
+.paper-stipple-palette-add {
+  color: #354776;
+  font: 700 1rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-inline-palette-editor {
+  display: flex;
+  position: fixed;
+  z-index: 30;
+  box-sizing: border-box;
+  width: min(356px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid #d5d2ca;
+  border-radius: 8px;
+  background: #fffefa;
+  box-shadow: 0 12px 28px rgb(31 35 47 / 16%);
+}
+
+.paper-stipple-palette-summary {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid #d5d2ca;
+  border-radius: 7px;
+  background: #fffefa;
+  color: #343943;
+  cursor: pointer;
+  font: 700 0.78rem Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: left;
+}
+
+.paper-stipple-palette-summary:hover { border-color: #aeb3bf; background: #faf9f4; }
+
+.paper-stipple-palette-summary-colors,
+.paper-stipple-preset-colors {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.paper-stipple-palette-summary-colors {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.paper-stipple-palette-summary-colors > span,
+.paper-stipple-preset-colors > span { flex: 1 1 0; }
+
+.paper-stipple-palette-editor-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #71747a;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paper-stipple-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.paper-stipple-preset-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 7px;
+  border: 1px solid #dedbd4;
+  border-radius: 6px;
+  background: transparent;
+  color: #454a53;
+  cursor: pointer;
+  font: 700 0.72rem Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: left;
+}
+
+.paper-stipple-preset-card:hover { border-color: #aeb3bf; background: #f7f6f1; }
+
+.paper-stipple-preset-colors { height: 20px; }
+
+.paper-stipple-palette-custom {
+  padding-top: 13px;
+  border-top: 1px solid #e1ded8;
+}
+
+.paper-stipple-palette-custom-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.paper-stipple-palette-custom-header .paper-stipple-palette-editor-label { margin-bottom: 7px; }
+
+.paper-stipple-palette-order-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.paper-stipple-palette-icon-button {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #d5d2ca;
+  border-radius: 5px;
+  background: #fffefa;
+  color: #354776;
+  cursor: pointer;
+}
+
+.paper-stipple-palette-icon-button svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.55;
+}
+
+.paper-stipple-palette-icon-button:hover { border-color: #8f98ae; background: #f3f4f7; }
+
+.paper-stipple-palette-icon-button:focus-visible,
+.paper-stipple-palette-drag-handle:focus-visible {
+  outline: 2px solid #526898;
+  outline-offset: 2px;
+}
+
+.paper-stipple-palette-icon-button:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.paper-stipple-palette-color-list { display: grid; gap: 6px; }
+
+.paper-stipple-palette-color-row {
+  display: grid;
+  grid-template-columns: 26px 28px minmax(0, 1fr) auto 24px;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  border-radius: 5px;
+  transition: background 120ms ease, box-shadow 120ms ease;
+}
+
+.paper-stipple-palette-color-row.is-dragging { opacity: 0.42; }
+
+.paper-stipple-palette-color-row.is-drop-target {
+  background: #eff2f8;
+  box-shadow: inset 0 2px #526898;
+}
+
+.paper-stipple-palette-drag-handle {
+  display: grid;
+  width: 26px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #9a9da2;
+  cursor: grab;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  touch-action: none;
+  user-select: none;
+}
+
+.paper-stipple-palette-drag-handle:active { cursor: grabbing; background: #f0f1f4; }
+
+.paper-stipple-palette-drag-handle:hover { color: #526898; background: #f5f5f2; }
+
+.paper-stipple-palette-drag-spacer { display: block; }
+
+.paper-stipple-palette-color-row input[type="color"] {
+  width: 28px;
+  height: 28px;
+  padding: 1px;
+  border: 1px solid #d5d2ca;
+  border-radius: 5px;
+  background: #fffefa;
+  cursor: pointer;
+}
+
+.paper-stipple-palette-color-row > span {
+  overflow: hidden;
+  color: #3f444c;
+  font-size: 0.75rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paper-stipple-palette-color-row code {
+  color: #777a80;
+  font: 650 0.68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.paper-stipple-palette-remove {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #9a3f37;
+  cursor: pointer;
+  font: 700 1rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-palette-remove:hover { background: #fff0ed; }
+
+.paper-stipple-palette-add-color {
+  margin-top: 9px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #354776;
+  cursor: pointer;
+  font: 700 0.73rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-palette-add-color:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.paper-stipple-inline-palette-actions {
+  justify-content: flex-end;
+}
+
+.paper-stipple-inline-palette-actions .paper-stipple-delete-layer {
+  border-color: #e2c2be;
+  background: #fff7f5;
+  color: #9a3f37;
+}
+
+.paper-stipple-control-group-label {
+  color: #71747a;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paper-stipple-form-picker {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  color: #4c515a;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.paper-stipple-form-picker > button {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid #cfd3df;
+  border-radius: 7px;
+  background: #fffefa;
+  color: #2b2e35;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.paper-stipple-form-picker > button:hover {
+  border-color: #a9b0c4;
+  background: #fdfcf8;
+}
+
+.paper-stipple-form-picker > button:focus-visible,
+.paper-stipple-form-card:focus-visible {
+  outline: 2px solid #5575d6;
+  outline-offset: 2px;
+}
+
+.paper-stipple-form-picker-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  background: #d7e1ec;
+}
+
+.paper-stipple-type-option-label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.paper-stipple-type-option-label > span,
+.paper-stipple-type-option-label > strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paper-stipple-type-option-label > span {
+  color: #71747a;
+  font: 700 0.7rem/1.1 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.paper-stipple-type-option-label > strong {
+  color: #3f444c;
+  font: 700 0.74rem/1.15 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-form-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paper-stipple-background-picker > button {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid #cfd3df;
+  border-radius: 7px;
+  background: #fffefa;
+  color: #2b2e35;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.paper-stipple-background-picker > button:hover {
+  border-color: #a9b0c4;
+  background: #fdfcf8;
+}
+
+.paper-stipple-background-picker > button:focus-visible,
+.paper-stipple-background-card:focus-visible {
+  outline: 2px solid #5575d6;
+  outline-offset: 2px;
+}
+
+.paper-stipple-background-picker-preview,
+.paper-stipple-background-card-preview {
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #d8d5ce;
+}
+
+.paper-stipple-background-picker-preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.paper-stipple-background-picker-preview[data-background="quiet"],
+.paper-stipple-background-card-preview[data-background="quiet"] {
+  background: linear-gradient(145deg, #e5e4df, #cacac5);
+}
+
+.paper-stipple-background-picker-preview[data-background="gradient"],
+.paper-stipple-background-card-preview[data-background="gradient"] {
+  background: linear-gradient(135deg, #b7d7e9, #f0a2af 52%, #e4be42);
+}
+
+.paper-stipple-background-picker-preview[data-background="layers"],
+.paper-stipple-background-card-preview[data-background="layers"] {
+  background: linear-gradient(180deg, #b7d7e9 0 22%, #e6b06f 22% 43%, #659f74 43% 68%, #475f92 68%);
+}
+
+.paper-stipple-background-picker-preview[data-background="contour"],
+.paper-stipple-background-card-preview[data-background="contour"] {
+  background:
+    repeating-linear-gradient(168deg, transparent 0 7px, rgb(38 81 99 / 38%) 8px 9px, transparent 10px 15px),
+    linear-gradient(145deg, #c5dfd4, #8fb5c8);
+}
+
+.paper-stipple-background-picker-preview[data-background="glow"],
+.paper-stipple-background-card-preview[data-background="glow"] {
+  background: radial-gradient(circle at 35% 40%, #f5cd78, #d58d9b 34%, #7899c1 78%);
+}
+
+.paper-stipple-background-picker-preview[data-background="flow"],
+.paper-stipple-background-card-preview[data-background="flow"] {
+  background:
+    linear-gradient(165deg, transparent 28%, rgb(248 203 106 / 75%) 40%, transparent 54%),
+    linear-gradient(15deg, #88b8c9, #8170a4 48%, #cf8494);
+}
+
+.paper-stipple-background-picker-preview[data-background="facets"],
+.paper-stipple-background-card-preview[data-background="facets"] {
+  background:
+    linear-gradient(145deg, transparent 0 47%, rgb(255 255 255 / 30%) 47% 49%, transparent 49%),
+    linear-gradient(35deg, #91b4be 0 44%, #d3a59d 44% 71%, #b17b92 71%);
+}
+
+.paper-stipple-background-picker-preview[data-background="wash"],
+.paper-stipple-background-card-preview[data-background="wash"] {
+  background:
+    linear-gradient(142deg, transparent 25%, rgb(251 202 104 / 75%) 40%, transparent 57%),
+    linear-gradient(142deg, #7fa6c2, #c98798 54%, #e8b863);
+}
+
+.paper-stipple-treatment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.paper-stipple-advanced-options {
+  padding-top: 13px;
+  border-top: 1px solid #dedbd4;
+}
+
+.paper-stipple-advanced-options > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #4c515a;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 720;
+  list-style: none;
+}
+
+.paper-stipple-advanced-options > summary::-webkit-details-marker { display: none; }
+.paper-stipple-advanced-options > summary::after { color: #6c7078; content: "+"; font-size: 1rem; font-weight: 500; }
+.paper-stipple-advanced-options[open] > summary::after { content: "−"; }
+
+.paper-stipple-advanced-options > div {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 13px;
+}
+
+.paper-stipple-form-browser {
+  position: fixed;
+  z-index: 20;
+  top: 64px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  box-sizing: border-box;
+  width: min(372px, 44vw);
+  min-width: 260px;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 20px;
+  border-left: 1px solid #d7d3cb;
+  background: #f8f7f3;
+  box-shadow: -8px 0 18px rgb(31 35 47 / 8%);
+}
+
+.paper-stipple-form-browser-toolbar {
+  position: sticky;
+  z-index: 1;
+  top: -20px;
+  margin: -20px -20px 14px;
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid #dedbd4;
+  background: #f8f7f3;
+}
+
+.paper-stipple-form-browser-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.paper-stipple-form-browser-header h2 {
+  margin: 0;
+  color: #1e2025;
+  font-size: 1.08rem;
+  letter-spacing: -0.03em;
+}
+
+.paper-stipple-form-browser-header p {
+  margin: 5px 0 0;
+  color: #6a6e76;
+  font-size: 0.76rem;
+}
+
+.paper-stipple-form-browser-header button {
+  display: grid;
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #d5d2ca;
+  border-radius: 6px;
+  background: #fffefa;
+  color: #444953;
+  cursor: pointer;
+  font: 400 1.25rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-form-browser-header button:hover { background: #f0eee8; }
+
+.paper-stipple-form-browser-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -2px 0 0;
+}
+
+.paper-stipple-form-browser-filters button {
+  min-height: 29px;
+  padding: 0 10px;
+  border: 1px solid #d6d4ce;
+  border-radius: 999px;
+  background: #fffefa;
+  color: #62666e;
+  cursor: pointer;
+  font: 700 0.72rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-form-browser-filters button:hover { border-color: #9da8c5; }
+
+.paper-stipple-form-browser-filters button[aria-pressed="true"] {
+  border-color: #2d3e73;
+  background: #2d3e73;
+  color: #fff;
+}
+
+.paper-stipple-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.paper-stipple-form-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 6px 8px;
+  border: 1px solid #d6d4ce;
+  border-radius: 8px;
+  background: #fffefa;
+  color: #333740;
+  cursor: pointer;
+  font: 700 0.72rem Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: left;
+}
+
+.paper-stipple-form-card:hover {
+  border-color: #9da8c5;
+  box-shadow: 0 5px 14px rgb(43 52 76 / 11%);
+  transform: translateY(-1px);
+}
+
+.paper-stipple-form-card[aria-pressed="true"] {
+  border-color: #2d3e73;
+  box-shadow: 0 0 0 1px #2d3e73;
+}
+
+.paper-stipple-form-card-preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  background: #d7e1ec;
+}
+
+.paper-stipple-background-browser {
+  position: fixed;
+  z-index: 20;
+  top: 64px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  box-sizing: border-box;
+  width: min(372px, 44vw);
+  min-width: 260px;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 20px;
+  border-left: 1px solid #d7d3cb;
+  background: #f8f7f3;
+  box-shadow: -8px 0 18px rgb(31 35 47 / 8%);
+}
+
+.paper-stipple-background-browser-toolbar {
+  position: sticky;
+  z-index: 1;
+  top: -20px;
+  margin: -20px -20px 14px;
+  padding: 20px 20px 0;
+  border-bottom: 1px solid #dedbd4;
+  background: #f8f7f3;
+}
+
+.paper-stipple-background-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.paper-stipple-background-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 6px 8px;
+  border: 1px solid #d6d4ce;
+  border-radius: 8px;
+  background: #fffefa;
+  color: #333740;
+  cursor: pointer;
+  font: 700 0.74rem Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: left;
+}
+
+.paper-stipple-background-card:hover {
+  border-color: #9da8c5;
+  box-shadow: 0 5px 14px rgb(43 52 76 / 11%);
+  transform: translateY(-1px);
+}
+
+.paper-stipple-background-card[aria-pressed="true"] {
+  border-color: #2d3e73;
+  box-shadow: 0 0 0 1px #2d3e73;
+}
+
+.paper-stipple-background-card-preview {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 3px;
+}
+
+.paper-stipple-background-card small {
+  overflow: hidden;
+  color: #737780;
+  font-size: 0.64rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paper-stipple-animation-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paper-stipple-playback-group,
+.paper-stipple-surge-group {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.paper-stipple-surge-group {
+  padding: 14px;
+  border: 1px solid #e1ded5;
+  border-radius: 8px;
+  background: #fbfaf7;
+}
+
+.paper-stipple-animation-group-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.paper-stipple-animation-group-heading h2 {
+  margin: 0;
+  color: #313640;
+  font: 700 0.82rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-surge-button {
+  min-width: 58px;
+  min-height: 28px;
+  padding: 0 9px;
+  border: 1px solid #273d78;
+  border-radius: 6px;
+  background: #273d78;
+  color: #fff;
+  cursor: pointer;
+  font: 700 0.68rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.paper-stipple-surge-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.paper-stipple-play-button {
+  min-width: 58px;
+  min-height: 28px;
+  padding: 0 9px;
+  border: 1px solid #d5d2ca;
+  border-radius: 5px;
+  background: #fffefa;
+  color: #444953;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.paper-stipple-play-button[aria-pressed="true"] {
+  border-color: #273d78;
+  background: #eef2ff;
+  color: #273d78;
+}
+
+.paper-stipple-play-button:disabled { cursor: not-allowed; opacity: 0.42; }
+
+@media (max-width: 960px) {
+  .paper-stipple-shell { grid-template-columns: minmax(0, 1fr) minmax(288px, 42vw); }
+}
+
+@media (max-width: 720px) {
+  .paper-stipple-shell { grid-template-columns: minmax(0, 1fr) minmax(260px, 44vw); }
+  .paper-stipple-topbar { align-items: flex-start; }
+  .paper-stipple-topbar-actions { flex-direction: column; align-items: end; gap: 7px; }
+  .paper-stipple-canvas-format { flex-direction: column; align-items: end; gap: 3px; }
+  .paper-stipple-main { padding: 24px 18px; }
+}
+
+/* Toolcraft workspace shell -------------------------------------------------
+   The renderer and controls remain product-specific. The composition borrows
+   Toolcraft's canvas-first, docked-inspector model without adding its large
+   motion runtime to this performance-sensitive editor. */
+.toolcraft-stipple-shell {
+  --stipple-workspace: #17191d;
+  --stipple-chrome: #fbfbfa;
+  --stipple-panel: rgb(255 255 253 / 96%);
+  --stipple-border: rgb(22 25 31 / 13%);
+  background: var(--stipple-workspace);
+}
+
+.toolcraft-stipple-shell .paper-stipple-topbar {
+  min-height: 56px;
+  gap: 14px;
+  padding: 8px 18px 8px 20px;
+  border-bottom-color: rgb(255 255 255 / 9%);
+  background: var(--stipple-chrome);
+}
+
+.toolcraft-stipple-shell .paper-stipple-back {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #dededb;
+  border-radius: 8px;
+  color: #363941;
+  font-size: 0;
+}
+
+.toolcraft-stipple-shell .paper-stipple-back::before {
+  content: "←";
+  font-size: 1rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-kicker {
+  display: none;
+}
+
+.toolcraft-stipple-shell .paper-stipple-topbar h1 {
+  font-size: .95rem;
+  letter-spacing: -.025em;
+}
+
+.toolcraft-stipple-shell .paper-stipple-topbar-actions {
+  gap: 10px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-local-status {
+  padding-right: 2px;
+  font-size: .7rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-canvas-format {
+  gap: 6px;
+  font-size: .68rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-canvas-format select {
+  min-height: 32px;
+  width: 194px;
+  border-radius: 8px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-topbar-actions button {
+  min-height: 32px;
+  border-radius: 8px;
+  background: #222631;
+  font-size: .72rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-shell {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.toolcraft-stipple-shell .paper-stipple-main {
+  height: 100%;
+  padding: clamp(18px, 2.4vw, 34px);
+  background:
+    radial-gradient(circle at 52% 42%, rgb(255 255 255 / 5%), transparent 45%),
+    var(--stipple-workspace);
+}
+
+.toolcraft-stipple-shell .paper-stipple-previews {
+  max-width: none;
+  /* Keep the floating inspector out of the artwork's usable viewport. */
+  padding-right: calc(clamp(320px, 26vw, 368px) + 28px);
+}
+
+.toolcraft-stipple-shell .paper-stipple-canvas-wrap {
+  border-color: rgb(255 255 255 / 16%);
+  border-radius: 12px;
+  box-shadow: 0 22px 60px rgb(0 0 0 / 35%);
+}
+
+.toolcraft-stipple-shell .paper-stipple-canvas-toolbar {
+}
+
+.toolcraft-stipple-shell .paper-stipple-canvas-toolbar .paper-stipple-canvas-format select {
+  min-height: 28px;
+  width: 182px;
+  border-color: rgb(255 255 255 / 16%);
+  border-radius: 6px;
+  background: rgb(255 255 255 / 9%);
+  color: #f4f6f8;
+  color-scheme: dark;
+}
+
+.toolcraft-stipple-shell .paper-stipple-canvas-toolbar .paper-stipple-canvas-format option {
+  background: #242931;
+  color: #f4f6f8;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector {
+  position: absolute;
+  z-index: 10;
+  top: 14px;
+  right: 14px;
+  bottom: 14px;
+  width: clamp(320px, 26vw, 368px);
+  height: auto;
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--stipple-border);
+  border-radius: 12px;
+  background: var(--stipple-panel);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 28%);
+  /* Fixed pickers must be allowed to escape the dock. A backdrop filter would
+     create a containing block and clip the color editor inside this panel. */
+  backdrop-filter: none;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-header {
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-bottom: 1px solid rgb(31 36 44 / 9%);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-header > strong {
+  overflow: hidden;
+  color: #242932;
+  font-size: .78rem;
+  font-weight: 670;
+  letter-spacing: -.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-panel-icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #686d76;
+  cursor: pointer;
+  font: 700 1rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.toolcraft-stipple-shell .paper-stipple-panel-icon:hover {
+  background: #efefec;
+  color: #282d37;
+}
+
+.toolcraft-stipple-shell .paper-stipple-versions-trigger {
+  min-height: 27px;
+  padding: 0 7px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #5f6470;
+  font-size: .67rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-versions-trigger:hover,
+.toolcraft-stipple-shell .paper-stipple-versions-trigger[aria-pressed="true"] {
+  background: #efefec;
+  color: #282d37;
+}
+
+/* The active panel title already identifies Presets; keeping the trigger here
+   would repeat the same label without adding a useful action. */
+.toolcraft-stipple-shell .paper-stipple-versions-trigger[aria-pressed="true"] {
+  display: none;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-tabs {
+  gap: 3px;
+  flex: 0 0 auto;
+  margin: 8px 10px;
+  padding: 3px;
+  border: 1px solid #e2e1dd;
+  border-radius: 9px;
+  background: #f2f2ef;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-tabs button {
+  min-height: 29px;
+  border: 0;
+  border-radius: 6px;
+  color: #777b83;
+  font-size: .7rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-tabs button[aria-pressed="true"] {
+  border-bottom-color: transparent;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(26 29 35 / 12%);
+  color: #252a35;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-content {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.toolcraft-stipple-shell .paper-stipple-stipple-panel {
+  display: block;
+}
+
+.toolcraft-stipple-shell .paper-stipple-versions {
+  padding: 12px 13px 16px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-toolcraft-section {
+  gap: 0;
+  border-top-color: rgb(31 36 44 / 9%);
+  background: transparent;
+}
+
+.toolcraft-stipple-shell .paper-stipple-toolcraft-section:hover {
+  background: transparent;
+}
+
+.toolcraft-stipple-shell .paper-stipple-toolcraft-section:first-child {
+  border-top: 0;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-header {
+  display: flex;
+  height: 36px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 11px 0 13px;
+  border: 0;
+  background: transparent;
+  color: #343944;
+  cursor: pointer;
+  font: 750 .69rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .055em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-header > span:last-child {
+  color: #7b8087;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 13px 13px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-content > .paper-stipple-form-details {
+  gap: 10px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-content > .paper-stipple-slider + .paper-stipple-slider {
+  margin-top: 0;
+}
+
+.toolcraft-stipple-shell .paper-stipple-toolcraft-section[data-collapsed="true"] {
+  padding-bottom: 13px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-control-group-label {
+  color: #777b82;
+  font-size: .62rem;
+  letter-spacing: .09em;
+}
+
+.toolcraft-stipple-shell .paper-stipple-slider {
+  gap: 5px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-type-options,
+.toolcraft-stipple-shell .paper-stipple-type-options.has-background {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #e1e1dd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker,
+.toolcraft-stipple-shell .paper-stipple-inline-palette,
+.toolcraft-stipple-shell .paper-stipple-background-picker {
+  min-width: 0;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker > button,
+.toolcraft-stipple-shell .paper-stipple-palette-summary,
+.toolcraft-stipple-shell .paper-stipple-background-picker > button {
+  position: relative;
+  min-height: 46px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  padding: 6px 30px 6px 7px;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker > button::after,
+.toolcraft-stipple-shell .paper-stipple-palette-summary::after,
+.toolcraft-stipple-shell .paper-stipple-background-picker > button::after {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  color: #777d86;
+  content: "›";
+  font: 400 1.2rem/1 system-ui, sans-serif;
+  transform: translateY(-52%);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker > button:hover,
+.toolcraft-stipple-shell .paper-stipple-palette-summary:hover,
+.toolcraft-stipple-shell .paper-stipple-background-picker > button:hover {
+  border: 0;
+  background: #f7f7f5;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inline-palette,
+.toolcraft-stipple-shell .paper-stipple-background-picker {
+  border-top: 1px solid #e8e8e4;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker-preview,
+.toolcraft-stipple-shell .paper-stipple-palette-summary-colors,
+.toolcraft-stipple-shell .paper-stipple-background-picker-preview {
+  width: 54px;
+  height: 32px;
+  flex: 0 0 54px;
+  aspect-ratio: auto;
+  border-radius: 4px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-type-option-label {
+  min-width: 0;
+  align-items: flex-start;
+  gap: 1px;
+  text-align: left;
+}
+
+.toolcraft-stipple-shell .paper-stipple-type-option-label > span {
+  color: #81868e;
+  font-size: .59rem;
+  letter-spacing: .075em;
+}
+
+.toolcraft-stipple-shell .paper-stipple-type-option-label > strong {
+  color: #343942;
+  font-size: .73rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-details {
+  gap: 10px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-gradient-control {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-gradient-control [data-slot="gradient-stops-control-main"] {
+  gap: 10px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-gradient-control [data-slot="gradient-stops-track"] {
+  min-height: 32px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-gradient-control [data-slot="gradient-stop-list"] {
+  gap: 7px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-light-control {
+  padding: 2px 0 4px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-control-loading {
+  min-height: 42px;
+  display: grid;
+  place-items: center start;
+  color: var(--stipple-panel-muted);
+  font-size: .7rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-light-control [data-vector-pad-shape="compact"] {
+  height: 112px;
+  background:
+    radial-gradient(circle at 50% 50%, rgb(174 189 255 / 13%), transparent 55%),
+    linear-gradient(180deg, rgb(255 255 255 / 5%), rgb(255 255 255 / 1%));
+}
+
+.toolcraft-stipple-shell .paper-stipple-advanced-options {
+  margin: 0 13px 14px;
+  padding-top: 12px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-animation-panel {
+  display: block;
+}
+
+.toolcraft-stipple-shell .paper-stipple-animation-command {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 7px 5px 9px;
+  border: 1px solid #e4e4e0;
+  border-radius: 7px;
+  background: #f8f8f6;
+  color: #70757d;
+  font-size: .68rem;
+  font-weight: 650;
+}
+
+.toolcraft-stipple-shell .paper-stipple-animation-command .paper-stipple-play-button,
+.toolcraft-stipple-shell .paper-stipple-animation-command .paper-stipple-surge-button {
+  min-width: 54px;
+  min-height: 26px;
+  border-radius: 5px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced {
+  padding-top: 2px;
+  border-top: 1px solid #e7e7e3;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced > summary {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  color: #666b74;
+  cursor: pointer;
+  font-size: .7rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced > summary::-webkit-details-marker {
+  display: none;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced > summary::after {
+  color: #848991;
+  content: "+";
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced[open] > summary::after {
+  content: "−";
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced > .paper-stipple-slider {
+  padding: 3px 0 5px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser,
+.toolcraft-stipple-shell .paper-stipple-background-browser {
+  top: 70px;
+  right: 14px;
+  bottom: 14px;
+  width: clamp(320px, 26vw, 368px);
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--stipple-border);
+  border-radius: 12px;
+  background: var(--stipple-panel);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 28%);
+  backdrop-filter: blur(18px);
+}
+
+/* Dark inspector ----------------------------------------------------------
+   The canvas and inspector now share one restrained, dark work surface. The
+   panel is intentionally a little lighter than the stage so control groups
+   remain scannable without returning to the earlier card-heavy treatment. */
+.toolcraft-stipple-shell {
+  --stipple-panel: #23272e;
+  --stipple-border: rgb(255 255 255 / 13%);
+  --stipple-panel-raised: #2b3038;
+  --stipple-panel-hover: #313741;
+  --stipple-panel-text: #f1f3f6;
+  --stipple-panel-muted: #a7adb8;
+  --stipple-panel-line: rgb(255 255 255 / 11%);
+  --stipple-panel-accent: #aebdff;
+  /* Toolcraft controls consume these shared tokens. Keeping them scoped to
+     the inspector prevents the dark control treatment leaking elsewhere. */
+  --background: #23272e;
+  --foreground: #f1f3f6;
+  --border: rgb(255 255 255 / 18%);
+  --input: #1c2026;
+  --muted: #2b3038;
+  --muted-foreground: #a7adb8;
+  --popover: #2b3038;
+  --primary: #aebdff;
+  --primary-foreground: #1d2340;
+  --ring: #aebdff;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector,
+.toolcraft-stipple-shell .paper-stipple-form-browser,
+.toolcraft-stipple-shell .paper-stipple-background-browser {
+  background: var(--stipple-panel);
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-header {
+  border-bottom-color: var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-header > strong {
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-panel-icon,
+.toolcraft-stipple-shell .paper-stipple-versions-trigger {
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-panel-icon:hover,
+.toolcraft-stipple-shell .paper-stipple-versions-trigger:hover {
+  background: var(--stipple-panel-hover);
+  color: #fff;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-tabs {
+  border-color: rgb(255 255 255 / 10%);
+  background: #1c2026;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-tabs button {
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-tabs button[aria-pressed="true"] {
+  background: var(--stipple-panel-raised);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 25%);
+  color: #fff;
+}
+
+.toolcraft-stipple-shell .paper-stipple-toolcraft-section,
+.toolcraft-stipple-shell .paper-stipple-toolcraft-section:first-child {
+  border-top-color: var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-header {
+  color: #d9dde5;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-header:hover {
+  background: rgb(255 255 255 / 3%);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inspector-section-header > span:last-child,
+.toolcraft-stipple-shell .paper-stipple-control-group-label,
+.toolcraft-stipple-shell .paper-stipple-type-option-label > span,
+.toolcraft-stipple-shell .paper-stipple-palette-editor-label {
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-type-options,
+.toolcraft-stipple-shell .paper-stipple-type-options.has-background {
+  border-color: rgb(255 255 255 / 12%);
+  background: var(--stipple-panel-raised);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker > button,
+.toolcraft-stipple-shell .paper-stipple-palette-summary,
+.toolcraft-stipple-shell .paper-stipple-background-picker > button {
+  background: var(--stipple-panel-raised);
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker > button:hover,
+.toolcraft-stipple-shell .paper-stipple-palette-summary:hover,
+.toolcraft-stipple-shell .paper-stipple-background-picker > button:hover {
+  background: var(--stipple-panel-hover);
+}
+
+.toolcraft-stipple-shell .paper-stipple-inline-palette,
+.toolcraft-stipple-shell .paper-stipple-background-picker {
+  border-top-color: var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-type-option-label > strong {
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-picker > button::after,
+.toolcraft-stipple-shell .paper-stipple-palette-summary::after,
+.toolcraft-stipple-shell .paper-stipple-background-picker > button::after {
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-slider,
+.toolcraft-stipple-shell .paper-stipple-motion-toggle,
+.toolcraft-stipple-shell .paper-stipple-advanced-options > summary,
+.toolcraft-stipple-shell .paper-stipple-motion-advanced > summary {
+  color: #d9dde5;
+}
+
+.toolcraft-stipple-shell .paper-stipple-slider-value input[type="number"],
+.toolcraft-stipple-shell .paper-stipple-select select,
+.toolcraft-stipple-shell .paper-stipple-save-version input {
+  border-color: rgb(255 255 255 / 14%);
+  background: #1c2026;
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-slider-value input[type="number"]:focus,
+.toolcraft-stipple-shell .paper-stipple-save-version input:focus {
+  outline-color: var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-slider > input[type="range"] {
+  accent-color: var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-toggle-track {
+  border-color: rgb(255 255 255 / 20%);
+  background: #15191f;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-toggle-track::after {
+  background: #e7eaf0;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-toggle input:checked + .paper-stipple-motion-toggle-track {
+  border-color: var(--stipple-panel-accent);
+  background: #6275c4;
+}
+
+.toolcraft-stipple-shell .paper-stipple-animation-command {
+  border-color: rgb(255 255 255 / 12%);
+  background: #1c2026;
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-play-button,
+.toolcraft-stipple-shell .paper-stipple-surge-button,
+.toolcraft-stipple-shell .paper-stipple-export-trigger,
+.toolcraft-stipple-shell .paper-stipple-save-version button {
+  background: #aebdff;
+  color: #1d2340;
+}
+
+.toolcraft-stipple-shell .paper-stipple-play-button:hover,
+.toolcraft-stipple-shell .paper-stipple-surge-button:hover,
+.toolcraft-stipple-shell .paper-stipple-export-trigger:hover,
+.toolcraft-stipple-shell .paper-stipple-save-version button:hover {
+  background: #c2ccff;
+}
+
+.toolcraft-stipple-shell .paper-stipple-motion-advanced,
+.toolcraft-stipple-shell .paper-stipple-advanced-options,
+.toolcraft-stipple-shell .paper-stipple-version-list,
+.toolcraft-stipple-shell .paper-stipple-version-row {
+  border-color: var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-note,
+.toolcraft-stipple-shell .paper-stipple-version-note,
+.toolcraft-stipple-shell .paper-stipple-version-row small {
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-message {
+  color: #b7dcbf;
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-row.is-active {
+  box-shadow: inset 3px 0 var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-row strong {
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-versions > .paper-stipple-section-header strong {
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-actions button {
+  border-color: rgb(255 255 255 / 16%);
+  background: var(--stipple-panel-raised);
+  color: #eef1f7;
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-actions button:hover {
+  background: var(--stipple-panel-hover);
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-actions .paper-stipple-version-delete {
+  border-color: transparent;
+  background: transparent;
+  color: #e69aa7;
+}
+
+.toolcraft-stipple-shell .paper-stipple-version-actions .paper-stipple-version-delete:hover {
+  border-color: #703e4b;
+  background: #3a252c;
+  color: #ffbac3;
+}
+
+.toolcraft-stipple-shell .paper-stipple-inline-palette-editor {
+  border-color: rgb(255 255 255 / 14%);
+  background: #282d35;
+  box-shadow: 0 18px 48px rgb(0 0 0 / 38%);
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-preset-card {
+  border-color: rgb(255 255 255 / 13%);
+  color: #e6e9ef;
+}
+
+.toolcraft-stipple-shell .paper-stipple-preset-card:hover {
+  border-color: #7283c6;
+  background: var(--stipple-panel-hover);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-custom {
+  border-top-color: var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-icon-button,
+.toolcraft-stipple-shell .paper-stipple-palette-color-row input[type="color"] {
+  border-color: rgb(255 255 255 / 16%);
+  background: var(--stipple-panel-raised);
+  color: var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-icon-button:hover {
+  border-color: #7283c6;
+  background: var(--stipple-panel-hover);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-color-row.is-drop-target {
+  background: #343b52;
+  box-shadow: inset 0 2px var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-drag-handle:hover,
+.toolcraft-stipple-shell .paper-stipple-palette-drag-handle:active {
+  background: var(--stipple-panel-hover);
+  color: var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-color-row > span {
+  color: #e4e7ec;
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-color-row code {
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-remove:hover {
+  background: #3b252b;
+}
+
+.toolcraft-stipple-shell .paper-stipple-palette-add-color {
+  color: var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-toolbar,
+.toolcraft-stipple-shell .paper-stipple-background-browser-toolbar {
+  background: var(--stipple-panel);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser h2,
+.toolcraft-stipple-shell .paper-stipple-background-browser h2,
+.toolcraft-stipple-shell .paper-stipple-form-browser-header button,
+.toolcraft-stipple-shell .paper-stipple-background-browser-header button {
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-toolbar,
+.toolcraft-stipple-shell .paper-stipple-background-browser-toolbar {
+  top: -14px;
+  margin: -14px -14px 12px;
+  padding: 14px 14px 12px;
+  background: var(--stipple-panel);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-header {
+  margin-bottom: 12px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-header p {
+  display: none;
+}
+
+/* Explore types is part of the inspector system, not a legacy light modal.
+   Keep its palette-aware previews prominent while the surrounding controls
+   inherit the same dark surface and selection language as the editor. */
+.toolcraft-stipple-shell .paper-stipple-form-browser-toolbar {
+  border-bottom-color: var(--stipple-panel-line);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-header button {
+  border-color: var(--stipple-border);
+  background: var(--stipple-panel-raised);
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-header button:hover {
+  background: var(--stipple-panel-hover);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-filters {
+  gap: 5px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-filters button {
+  border-color: var(--stipple-border);
+  background: var(--stipple-panel-raised);
+  color: var(--stipple-panel-muted);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-filters button:hover {
+  border-color: var(--stipple-panel-accent);
+  background: var(--stipple-panel-hover);
+  color: var(--stipple-panel-text);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-browser-filters button[aria-pressed="true"] {
+  border-color: var(--stipple-panel-accent);
+  background: var(--stipple-panel-accent);
+  color: #1d2340;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-card {
+  gap: 7px;
+  padding: 5px 5px 7px;
+  border-color: var(--stipple-border);
+  border-radius: 7px;
+  background: var(--stipple-panel-raised);
+  color: var(--stipple-panel-text);
+  font-size: .68rem;
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-card:hover {
+  border-color: var(--stipple-panel-accent);
+  background: var(--stipple-panel-hover);
+  box-shadow: 0 5px 14px rgb(0 0 0 / 18%);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-card[aria-pressed="true"] {
+  border-color: var(--stipple-panel-accent);
+  box-shadow: 0 0 0 1px var(--stipple-panel-accent);
+}
+
+.toolcraft-stipple-shell .paper-stipple-form-card-preview {
+  border-radius: 4px;
+  background: #1c2026;
+}
+
+@media (max-width: 720px) {
+  .toolcraft-stipple-shell .paper-stipple-local-status { display: none; }
+
+  .toolcraft-stipple-shell .paper-stipple-canvas-format select { width: 154px; }
+
+  .toolcraft-stipple-shell .paper-stipple-inspector,
+  .toolcraft-stipple-shell .paper-stipple-form-browser,
+  .toolcraft-stipple-shell .paper-stipple-background-browser {
+    width: min(340px, calc(100vw - 28px));
+  }
+
+  .toolcraft-stipple-shell .paper-stipple-previews { padding-right: 0; }
+}
